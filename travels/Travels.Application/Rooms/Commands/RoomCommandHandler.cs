@@ -1,4 +1,3 @@
-using Travels.Application.Abstractions.Clock;
 using Travels.Application.Abstractions.Messaging;
 using Travels.Application.Exceptions;
 using Travels.Domain.Abstractions;
@@ -27,16 +26,16 @@ namespace Travels.Application.Rooms.Commands
         {
             try
             {
-                var room = RoomEntity.Create(request!.localization,
-                                            request!.numberOfBeds,
-                                            request!.capacity,
-                                            request!.features,
-                                            request!.roomType,
-                                            request!.pricePerPeriod,
-                                            request!.maintenance,
-                                            request!.totalPrice,
-                                            request!.featuresPrice,
-                                            request!.price);
+                var room = RoomEntity.Create(request!.Localization,
+                                            request!.NumberOfBeds,
+                                            request!.Capacity,
+                                            request!.Features,
+                                            request!.RoomType,
+                                            request!.PricePerPeriod,
+                                            request!.Maintenance,
+                                            request!.TotalPrice,
+                                            request!.FeaturesPrice,
+                                            request!.Price);
 
                 _roomRepository.Add(room);
 

@@ -23,22 +23,25 @@ namespace Travels.Application.Rooms.GetRoom
 
             var sql = """
            SELECT
-                *
-           FROM rooms WHERE id=@Id  
+                 id AS Id
+                ,localization_floor AS LocalizationFloor
+                ,localization_view AS LocalizationView
+                ,number_of_beds AS NumberOfBeds
+                ,capacity AS Capacity
+                ,features AS Features
+                ,room_type AS RoomType
+                ,price_per_period AS PricePerPeriod
+                ,maintenance AS Maintenance
+                ,total_price AS TotalPrice
+                ,features_price AS FeaturesPrice
+                ,price AS Price
+           FROM rooms 
+           WHERE id=@RoomId  
         """;
 
+            var parameter = new { request.RoomId };
 
-
-
-            var room = await connection.QueryFirstOrDefaultAsync<RoomResponse>(
-                sql,
-                new
-                {
-                    request.RoomId
-                }
-            );
-
-            return room!;
+            return await connection.QueryFirstOrDefaultAsync<RoomResponse>(sql, parameter);
         }
     }
 }

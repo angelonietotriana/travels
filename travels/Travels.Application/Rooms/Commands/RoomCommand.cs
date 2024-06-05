@@ -5,16 +5,16 @@ using Travels.Domain.Shared;
 namespace Travels.Application.Rooms.Commands
 {
     public record RoomCommand(
-        Localization localization,
-        NumberOfBeds numberOfBeds,
-        Capacity capacity,
-        List<Features>? features,
-        RoomType roomType,
-        Currency pricePerPeriod,
-        Currency maintenance,
-        Currency totalPrice,
-        Currency featuresPrice,
-        Currency price
+        Localization Localization,
+        NumberOfBeds NumberOfBeds,
+        Capacity Capacity,
+        List<Features>? Features,
+        RoomType RoomType,
+        Currency PricePerPeriod,
+        Currency Maintenance,
+        Currency TotalPrice,
+        Currency FeaturesPrice,
+        Currency Price
     ) : ICommand<Guid>;
 }
 

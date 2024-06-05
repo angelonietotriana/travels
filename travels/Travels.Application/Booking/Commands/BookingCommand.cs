@@ -6,7 +6,7 @@ namespace Travels.Application.Booking.Commands
         Guid RoomsId,
         Guid HotelId,
         Guid UserIdBooking,
-        Guid UserIdVendor,
+        Guid UserIdShell,
         DateOnly StartDate,
         DateOnly EndDate
 

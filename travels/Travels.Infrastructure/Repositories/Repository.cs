@@ -1,5 +1,6 @@
 using Travels.Domain.Abstractions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace Travels.Infrastructure.Repositories {
 
@@ -28,6 +29,10 @@ namespace Travels.Infrastructure.Repositories {
             DbContext.Add(entity);
         }
 
+        public void Update(T entity)
+        {
+            DbContext.Update(entity);
+        }
 
-    }
+     }
 }

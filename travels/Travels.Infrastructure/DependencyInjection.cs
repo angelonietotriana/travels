@@ -9,14 +9,15 @@ using Travels.Application.Abstractions.Email;
 using Travels.Domain.Abstractions;
 using Travels.Domain.Bookings;
 using Travels.Domain.Hotels;
+using Travels.Domain.HotelsRooms;
 using Travels.Domain.Rooms;
 using Travels.Domain.Users;
-using Travels.Infrastructure;
 using Travels.Infrastructure.Clock;
 using Travels.Infrastructure.Data;
 using Travels.Infrastructure.Repositories;
 
-namespace Travels.Infrastructure {
+namespace Travels.Infrastructure
+{
     public static class DependencyInjection
     {
 
@@ -41,6 +42,8 @@ namespace Travels.Infrastructure {
             services.AddScoped<IRoomRepository, RoomRepository>();
             services.AddScoped<IBookingRepository, BookingRepository>();
             services.AddScoped<IHotelRepository, HotelRepository>();
+            services.AddScoped<IHotelsRoomsRepository, HotelsRoomsRepository>();
+
 
             services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
 

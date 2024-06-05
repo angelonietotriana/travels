@@ -65,9 +65,9 @@ namespace Travels.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("user_id_booking");
 
-                    b.Property<Guid>("UserIdVendor")
+                    b.Property<Guid>("UserIdSells")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("user_id_vendor");
+                        .HasColumnName("user_id_sells");
 
                     b.HasKey("Id")
                         .HasName("pk_bookings");
@@ -107,6 +107,33 @@ namespace Travels.Infrastructure.Migrations
                         .HasName("pk_hotels");
 
                     b.ToTable("hotels", (string)null);
+                });
+
+            modelBuilder.Entity("Travels.Domain.HotelsRooms.HotelsRoomsEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
+
+                    b.Property<Guid>("HotelId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("hotel_id");
+
+                    b.Property<Guid>("RoomId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("room_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_hotels_rooms");
+
+                    b.HasIndex("HotelId")
+                        .HasDatabaseName("ix_hotels_rooms_hotel_id");
+
+                    b.HasIndex("RoomId")
+                        .HasDatabaseName("ix_hotels_rooms_room_id");
+
+                    b.ToTable("hotels_rooms", (string)null);
                 });
 
             modelBuilder.Entity("Travels.Domain.Rooms.RoomEntity", b =>
@@ -152,12 +179,6 @@ namespace Travels.Infrastructure.Migrations
                         .HasColumnType("decimal(18,2)")
                         .HasColumnName("total_price");
 
-                    b.Property<long>("Version")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("bigint")
-                        .HasColumnName("version");
-
                     b.HasKey("Id")
                         .HasName("pk_rooms");
 
@@ -185,6 +206,10 @@ namespace Travels.Infrastructure.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)")
                         .HasColumnName("nombre");
+
+                    b.Property<int?>("Type")
+                        .HasColumnType("int")
+                        .HasColumnName("type");
 
                     b.HasKey("Id")
                         .HasName("pk_users");
@@ -332,6 +357,45 @@ namespace Travels.Infrastructure.Migrations
                     b.Navigation("Business");
 
                     b.Navigation("Capacity");
+                });
+
+            modelBuilder.Entity("Travels.Domain.HotelsRooms.HotelsRoomsEntity", b =>
+                {
+                    b.HasOne("Travels.Domain.Hotels.HotelEntity", null)
+                        .WithMany()
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired()
+                        .HasConstraintName("fk_hotels_rooms_hotels_hotel_id");
+
+                    b.HasOne("Travels.Domain.Rooms.RoomEntity", null)
+                        .WithMany()
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired()
+                        .HasConstraintName("fk_hotels_rooms_room_entity_room_id");
+
+                    b.OwnsOne("Travels.Domain.HotelsRooms.IsActive", "IsActive", b1 =>
+                        {
+                            b1.Property<Guid>("HotelsRoomsEntityId")
+                                .HasColumnType("uniqueidentifier")
+                                .HasColumnName("id");
+
+                            b1.Property<bool>("value")
+                                .HasColumnType("bit")
+                                .HasColumnName("is_active_value");
+
+                            b1.HasKey("HotelsRoomsEntityId");
+
+                            b1.ToTable("hotels_rooms");
+
+                            b1.WithOwner()
+                                .HasForeignKey("HotelsRoomsEntityId")
+                                .HasConstraintName("fk_hotels_rooms_hotels_rooms_id");
+                        });
+
+                    b.Navigation("IsActive")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Travels.Domain.Rooms.RoomEntity", b =>

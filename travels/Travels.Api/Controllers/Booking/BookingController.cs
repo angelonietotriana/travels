@@ -1,13 +1,14 @@
-using System.Drawing;
-using Travels.Application.Booking.GetBooking;
-using Travels.Application.Booking.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Travels.Api.Controllers.Hotel;
+using Travels.Application.Booking.Commands;
+using Travels.Application.Booking.GetBooking;
+using Travels.Application.Hotel.Commands;
+using Travels.Domain.Bookings;
+using Travels.Domain.Hotels;
 
-namespace Travels.Api.Controllers.Bookling
+namespace Travels.Api.Controllers.Booking
 {
-
-
 
     [ApiController]
     [Route("api/booking")]
@@ -33,20 +34,16 @@ namespace Travels.Api.Controllers.Bookling
         }
 
         [HttpPost]
-        public async Task<IActionResult> Booking(
-            Guid id,
-            BookingRequest request,
-            CancellationToken cancellationToken
-        )
+        public async Task<IActionResult> Booking(BookingRequest request, CancellationToken cancellationToken)
         {
             var command = new BookingCommand
             (
                 request.RoomId,
                 request.HotelId,
                 request.UserIdBooking,
-                request.UserIdVendor,
-                request.StartDate,
-                request.EndDate
+                request.UserIdSells,
+                DateOnly.Parse(request.StartDate),
+                DateOnly.Parse(request.EndDate)
             );
 
             var response = await _sender.Send(command, cancellationToken);
@@ -61,6 +58,36 @@ namespace Travels.Api.Controllers.Bookling
 
 
         }
+
+        [HttpPut]
+        public async Task<IActionResult> BookingUpdate(Guid id, BookingRequest request, CancellationToken cancellationToken
+)
+        {
+            var command = new BookingCommandUpdate
+            (
+                id,
+                request.RoomId,
+                request.HotelId,
+                request.UserIdBooking,
+                request.UserIdSells,
+                request.StartDate,
+                request.EndDate,
+                request.Status,
+                request.ConfirmDate,
+                request.RejectDate,
+                request.CompleteDate,
+                request.CancelationDate
+            );
+
+            var response = await _sender.Send(command, cancellationToken);
+
+            if (response.IsFailure)
+                return BadRequest(response.Error);
+
+
+            return CreatedAtAction(nameof(GetBooking), new { id = response.Value }, response.Value);
+        }
+
     }
 
 }

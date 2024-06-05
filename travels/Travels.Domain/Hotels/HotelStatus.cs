@@ -11,6 +11,7 @@ namespace Travels.Domain.Hotels
         init = 1,
         room_available = 2,
         room_not_available = 3,
-        close = 4
+        close = 4,
+        not_available = 5
     }
 }

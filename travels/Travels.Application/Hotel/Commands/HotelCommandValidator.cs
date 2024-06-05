@@ -12,7 +12,9 @@ namespace Travels.Application.Hotel.Commands
             RuleFor(c => c.Capacity).NotEmpty();
             RuleFor(c => c.Business).NotEmpty();
             RuleFor(c => c.Starts).NotEmpty();
-            RuleFor(c => c.State).NotEmpty();            
+            RuleFor(c => c.State).NotEmpty();
+            RuleFor(c => c.RoomId).NotEmpty();           
+            
         }
     }
 }

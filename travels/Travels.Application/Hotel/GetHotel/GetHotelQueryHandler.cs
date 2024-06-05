@@ -16,19 +16,28 @@ namespace Travels.Application.Booking.GetBooking
             _sqlConnectionFactory = sqlConnectionFactory;
         }
 
-        public async Task<Result<HotelResponse>> Handle(
-            GetHotelQuery request,
-            CancellationToken cancellationToken
-            )
+        public async Task<Result<HotelResponse>> Handle(GetHotelQuery request, CancellationToken cancellationToken )
         {
 
             using var connection = _sqlConnectionFactory.CreateConnection();
 
-            var sql = """
-           SELECT
-                *
-           FROM hotels WHERE id=@Id  
-        """;
+            var sql = """ 
+                    SELECT
+                      id AS Id
+                    , business_business_name AS BusinessName
+                    , business_nit AS Nit
+                    , address_city AS City
+                    , address_neighborhood AS Neighborhood
+                    , address_zone AS Zone
+                    , address_numeration AS Numeration
+                    , capacity_value AS Capacity
+                    , starts AS Starts
+                    , state AS State
+                    , date_created AS DateCreated
+                    FROM hotels 
+                    WHERE id=@HotelId  
+                    and state != 5
+                """;
 
 
 

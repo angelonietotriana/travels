@@ -7,16 +7,16 @@ namespace Travels.Application.Rooms.Commands
     {
         public RoomCommandValidator()
         {
-            RuleFor(c => c.localization).NotEmpty();
-            RuleFor(c => c.numberOfBeds).NotEmpty();
-            RuleFor(c => c.capacity).NotEmpty();
-            RuleFor(c => c.features).NotEmpty();
-            RuleFor(c => c.roomType).NotEmpty();
-            RuleFor(c => c.pricePerPeriod).NotEmpty();
-            RuleFor(c => c.maintenance).NotEmpty();
-            RuleFor(c => c.totalPrice).NotEmpty();
-            RuleFor(c => c.featuresPrice).NotEmpty();
-            RuleFor(c => c.price).NotEmpty();
+            RuleFor(c => c.Localization).NotEmpty();
+            RuleFor(c => c.NumberOfBeds).NotEmpty();
+            RuleFor(c => c.Capacity).NotEmpty();
+            RuleFor(c => c.Features).NotEmpty();
+            RuleFor(c => c.RoomType).NotEmpty();
+            RuleFor(c => c.PricePerPeriod).NotEmpty();
+            RuleFor(c => c.Maintenance).NotEmpty();
+            RuleFor(c => c.TotalPrice).NotEmpty();
+            RuleFor(c => c.FeaturesPrice).NotEmpty();
+            RuleFor(c => c.Price).NotEmpty();
         }
     }
 }

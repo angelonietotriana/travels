@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Travels.Application.Hotel.Commands;
 using Travels.Application.Hotel.GetHotel;
+using Travels.Domain.Hotels;
 
 namespace Travels.Api.Controllers.Hotel
 {
@@ -31,18 +32,18 @@ namespace Travels.Api.Controllers.Hotel
 
         [HttpPost]
         public async Task<IActionResult> Booking(
-            Guid id,
             HotelRequest request,
             CancellationToken cancellationToken
         )
         {
             var command = new HotelCommand
             (
-                request.Business,
-                request.Address,
-                request.Capacity,
-                request.Starts,
-                request.State
+                new Business(request.BusinessName, request.Nit),
+                new Address(request.City, request.Neighborhood, request.Zone, request.Numeration),
+                new TotalCapacity(request.TotalCapacity),
+                new Stars(request.Stars),
+                request.State,
+                request.RoomId
             );
 
             var response = await _sender.Send(command, cancellationToken);
@@ -52,9 +53,34 @@ namespace Travels.Api.Controllers.Hotel
             
 
             return CreatedAtAction(nameof(GetHotel), new { id = response.Value }, response.Value);
-
-
         }
+
+        [HttpPut]
+        public async Task<IActionResult> HotelUpdate(Guid id,
+                                                        HotelRequest request,
+                                                        CancellationToken cancellationToken
+        )
+        {
+            var command = new HotelCommandUpdated
+            (
+                id,
+                new Business(request.BusinessName, request.Nit),
+                new Address(request.City, request.Neighborhood, request.Zone, request.Numeration),
+                new TotalCapacity(request.TotalCapacity),
+                new Stars(request.Stars),
+                request.State,
+                request.RoomId
+            );
+
+            var response = await _sender.Send(command, cancellationToken);
+
+            if (response.IsFailure)
+                return BadRequest(response.Error);
+
+
+            return CreatedAtAction(nameof(GetHotel), new { id = response.Value }, response.Value);
+        }
+
     }
 
 }

@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using Travels.Domain.Abstractions;
+﻿using Travels.Domain.Abstractions;
 using Travels.Domain.Rooms.Events;
 using Travels.Domain.Shared;
 
@@ -7,18 +6,18 @@ namespace Travels.Domain.Rooms
 {
     public sealed class RoomEntity : Entity
     {
-        public Localization? Localization {  get; private set; }
-        public NumberOfBeds? NumberOfBeds { get; private set; }
-        public Capacity? Capacity { get; private set; }
-        public List<Features>? Features {  get; private set; }
-        public RoomType RoomType { get; private set; }
+        public Localization? Localization {  get; set; }
+        public NumberOfBeds? NumberOfBeds { get; set; }
+        public Capacity? Capacity { get; set; }
+        public List<Features>? Features {  get; set; }
+        public RoomType RoomType { get; set; }
 
-        public Currency? PricePerPeriod { get; private set; }
-        public Currency? Maintenance { get; private set; }
+        public Currency? PricePerPeriod { get; set; }
+        public Currency? Maintenance { get; set; }
 
-        public Currency? TotalPrice { get; private set; }
-        public Currency? FeaturesPrice { get; private set; }
-        public Currency Price { get; private set; }
+        public Currency? TotalPrice { get; set; }
+        public Currency? FeaturesPrice { get; set; }
+        public Currency Price { get; set; }
 
         public RoomEntity()
         {
@@ -49,6 +48,7 @@ namespace Travels.Domain.Rooms
                           Currency? FeaturesPrice,
                           Currency price)
         {
+            Id = Guid.NewGuid();
             Localization = localization;
             NumberOfBeds = numberOfBeds;
             Capacity = capacity;

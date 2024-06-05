@@ -2,6 +2,9 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Travels.Application.Rooms.Commands;
 using Travels.Application.Rooms.GetRoom;
+using Travels.Domain.Abstractions;
+using Travels.Domain.Rooms;
+using Travels.Domain.Shared;
 
 namespace Travels.Api.Controllers.Room
 {
@@ -18,36 +21,30 @@ namespace Travels.Api.Controllers.Room
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetRoom(
-            Guid id,
-            CancellationToken cancellationToken
-        )
+        public async Task<IActionResult> GetRoom(Guid id,
+                                                CancellationToken cancellationToken)
         {
             var query = new GetRoomQuery(id);
-            var result = await _sender.Send(query, cancellationToken);
+            var resultado = await _sender.Send(query, cancellationToken);
 
-            return result.IsSuccess ? Ok(result.Value) : NotFound();
+            return resultado.IsSuccess ? Ok(resultado.Value) : NotFound();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Booms(
-            Guid id,
-            RoomRequest request,
-            CancellationToken cancellationToken
-        )
+        public async Task<IActionResult> Rooms(RoomRequest request, CancellationToken cancellationToken)
         {
             var command = new RoomCommand
             (
-                request.Localization,
-                request.NumberOfBeds,
-                request.Capacity,
+                new Localization(request.Floor, request.View),
+                new NumberOfBeds(request.NumberOfBeds),
+                new Capacity(request.Capacity),
                 request.Features,
                 request.RoomType,
-                request.PricePerPeriod,
-                request.Maintenance,
-                request.TotalPrice,
-                request.FeaturesPrice,
-                request.Price
+                new Currency(request.PricePerPeriod),
+                new Currency(request.Maintenance),
+                new Currency(request.TotalPrice),
+                new Currency(request.FeaturesPrice),
+                new Currency(request.Price)
             );
 
             var response = await _sender.Send(command, cancellationToken);

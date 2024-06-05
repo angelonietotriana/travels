@@ -48,7 +48,7 @@ namespace Travels.Application.Booking.Commands
             if (userBooking is null)
                 return Result.Failure<Guid>(UserErrors.NotFound);
             
-            var userVendor = await _userRepository.GetByIdAsync(request.UserIdVendor, cancellationToken);
+            var userVendor = await _userRepository.GetByIdAsync(request.UserIdShell, cancellationToken);
             if (userVendor is null)
                 return Result.Failure<Guid>(UserErrors.NotFound);
            

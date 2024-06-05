@@ -4,6 +4,8 @@
     {
         Task<HotelEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
         void Add(HotelEntity hotel);
+
+        void Update(HotelEntity hotel); 
     }
 }
 

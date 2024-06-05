@@ -25,23 +25,20 @@ namespace Travels.Application.Booking.GetBooking
 
             var sql = """
            SELECT
-                id AS Id,
-                room_id AS RoomId,
-                user_id_booking AS UserIdBooking,
-                user_id_vendor AS UserIdVendor,
-                status AS Status,
-                price_per_booking AS BookingPrice,
-                currency_type AS CurrencyType,
-                maintenance_price AS MaintenancePrice,
-                maintenance_currency_type AS MaintenanceCurrentyType,
-                features_price AS FeaturesPrice,
-                features_currency_type AS FeaturesCurrencyType,
-                total_price AS TotalPrice,
-                total_price_currency_type AS TotalPriceCurrencyType,
-                start_duration AS StartDuration,
-                end_duration AS EndDuration,
-                creation_date AS CreationDate
-           FROM booking WHERE id=@Id  
+                id AS Id
+                ,hotel_id AS HotelId
+                ,room_id AS  RoomId
+                ,user_id_booking AS UserIdBooking
+                ,user_id_sells AS UserIdSells
+                ,status AS Status
+                ,duration_start AS StartDate
+                ,duration_end AS EndDate
+                ,creation_date AS CreationDate
+                ,confirm_date AS ConfirmDate
+                ,reject_date AS RejectDate
+                ,complete_date AS CompleteDate
+                ,cancelation_date AS CancelationDate
+           FROM bookings WHERE id=@BookingId  
         """;
 
 

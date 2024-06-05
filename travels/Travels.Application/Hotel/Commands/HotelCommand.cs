@@ -8,7 +8,8 @@ namespace Travels.Application.Hotel.Commands
         Address Address,
         TotalCapacity Capacity,
         Stars Starts,
-        HotelStatus State
+        HotelStatus State,
+        Guid RoomId
     ) : ICommand<Guid>;
 }
 

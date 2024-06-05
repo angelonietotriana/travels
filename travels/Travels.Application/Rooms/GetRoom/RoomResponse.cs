@@ -1,23 +1,20 @@
-using Travels.Domain.Rooms;
-using Travels.Domain.Shared;
-
 namespace Travels.Application.Rooms.GetRoom
 {
 
     public sealed class RoomResponse
     {
-        Guid Id { get; set; }
-        int Floor {  get; set; }    
-        int View {  get; set; } 
-        int NumberOfBeds { get; set; }
-        int Capacity { get; set; }
-        List<int>? Features { get; set; }
-        int RoomType { get; set; }
-        decimal PricePerPeriod { get; set; }
-        decimal Maintenance { get; set; }
-        decimal TotalPrice { get; set; }
-        decimal FeaturesPrice { get; set; }
-        decimal Price { get; set; }
+        public Guid Id { get; set; }
+        public int LocalizationFloor {  get; set; }
+        public int LocalizationView {  get; set; }
+        public int NumberOfBeds { get; set; }
+        public int Capacity { get; set; }
+        public string Features { get; set; }
+        public int RoomType { get; set; }
+        public decimal PricePerPeriod { get; set; }
+        public decimal Maintenance { get; set; }
+        public decimal TotalPrice { get; set; }
+        public decimal FeaturesPrice { get; set; }
+        public decimal Price { get; set; }
 
     }
 }

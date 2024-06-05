@@ -1,9 +1,10 @@
-using Travels.Application.Exceptions;
-using Travels.Domain.Abstractions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Travels.Application.Exceptions;
+using Travels.Domain.Abstractions;
 
-namespace Travels.Infrastructure {
+namespace Travels.Infrastructure
+{
 
     public sealed class ApplicationDbContext : DbContext, IUnitOfWork
     {

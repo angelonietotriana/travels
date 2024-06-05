@@ -52,6 +52,11 @@ namespace Travels.Domain.Bookings {
             "La creación del hotel falló"
         );
 
+        public static Error CreatedUser = new Error(
+            "User.Created",
+            "La creación del usuario falló"
+        );
+
     }
 
 }

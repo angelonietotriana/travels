@@ -1,4 +1,3 @@
-using CleanArchitecture.Application;
 using Travels.Api.Extensions;
 using Travels.Application;
 using Travels.Infrastructure;

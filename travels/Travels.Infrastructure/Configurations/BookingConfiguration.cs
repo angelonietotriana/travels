@@ -20,8 +20,8 @@ internal sealed class BookingConfiguration : IEntityTypeConfiguration<BookingEnt
             .HasForeignKey(bookingEntity => bookingEntity.RoomId);
 
         builder.HasOne<HotelEntity>()
-                .WithMany()
-                .HasForeignKey(bookingEntity => bookingEntity.HotelId);
+            .WithMany()
+            .HasForeignKey(bookingEntity => bookingEntity.HotelId);
 
         builder.HasOne<UserEntity>()
             .WithMany()

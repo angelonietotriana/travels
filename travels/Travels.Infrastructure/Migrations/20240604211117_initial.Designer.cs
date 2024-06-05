@@ -60,7 +60,7 @@ namespace Travels.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("room_id");
 
-                    b.Property<int>("Status")
+                    b.Property<int>("Type")
                         .HasColumnType("int")
                         .HasColumnName("status");
 
@@ -68,7 +68,7 @@ namespace Travels.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("user_id_booking");
 
-                    b.Property<Guid>("UserIdVendor")
+                    b.Property<Guid>("UserIdSells")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("user_id_vendor");
 

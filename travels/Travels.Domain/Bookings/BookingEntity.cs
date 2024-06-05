@@ -6,26 +6,24 @@ namespace Travels.Domain.Bookings
 {
     public sealed class BookingEntity : Entity
     {
+        public Guid HotelId { get; set; }
 
+        public Guid RoomId { get; set; }
 
-        public Guid HotelId { get; private set; }
+        public Guid UserIdBooking { get; set; }
+        public Guid UserIdSells { get; set; }
 
-        public Guid RoomId { get; private set; }
+        public BookingStatus Status { get; set; }
 
-        public Guid UserIdBooking { get; private set; }
-        public Guid UserIdVendor { get; private set; }
+        public DateRange? Duration { get; set; }
 
-        public BookingStatus Status { get; private set; }
+        public DateTime? CreationDate { get; set; }
+        public DateTime? ConfirmDate { get; set; }
 
-        public DateRange? Duration { get; private set; }
+        public DateTime? RejectDate { get; set; }
+        public DateTime? CompleteDate { get; set; }
 
-        public DateTime? CreationDate { get; private set; }
-        public DateTime? ConfirmDate { get; private set; }
-
-        public DateTime? RejectDate { get; private set; }
-        public DateTime? CompleteDate { get; private set; }
-
-        public DateTime? CancelationDate { get; private set; }
+        public DateTime? CancelationDate { get; set; }
 
         internal BookingEntity()
         {
@@ -40,10 +38,11 @@ namespace Travels.Domain.Bookings
                              DateRange? duration, 
                              DateTime? creationDate)
         {
+            Id = Guid.NewGuid();
             HotelId = hotelId;
             RoomId = roomId;
             UserIdBooking = userIdBooking;
-            UserIdVendor = userIdVendor;
+            UserIdSells = userIdVendor;
             Status = status;
             Duration = duration;
             CreationDate = creationDate;

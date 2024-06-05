@@ -12,29 +12,31 @@ namespace Travels.Domain.Users {
 
         }
 
-        private UserEntity(
-            Guid id,
-            Nombre nombre,
-            Apellido apellido,
-            Email email
-            ) : base(id)
+        public Nombre? Nombre { get; private set; }
+        public Apellido? Apellido { get; private set; }
+        public Email? Email { get; private set; }
+        public UserType? Type { get; private set; } 
+
+        private UserEntity(Guid id,
+                            Nombre nombre,
+                            Apellido apellido,
+                            Email email,
+                            UserType type) : base(id)
         {
             Nombre = nombre;
             Apellido = apellido;
             Email = email;
+            Type = type;
         }
-
-        public Nombre? Nombre { get; private set; }
-        public Apellido? Apellido { get; private set; }
-        public Email? Email { get; private set; }
 
         public static UserEntity Create(
             Nombre nombre,
             Apellido apellido,
-            Email email
+            Email email,
+            UserType type
         )
         {
-            var user = new UserEntity(Guid.NewGuid(), nombre, apellido, email);
+            var user = new UserEntity(Guid.NewGuid(), nombre, apellido, email, type);
             user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id));
             return user;
         }

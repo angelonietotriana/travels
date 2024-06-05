@@ -5,29 +5,25 @@ namespace Travels.Application.Booking.GetBooking
     {
         public Guid Id { get; init; }
         public Guid UserIdBooking { get; init; }
-        public Guid UserIdVendor { get; init; }
+        public Guid UserIdSells { get; init; }
 
         public Guid RoomId { get; init; }
 
+        public Guid HotelId { get; init; }
+
         public int Status { get; init; }
 
-        public decimal BookingPrice { get; init; }
-
-        public string? CurrencyType { get; init; }
-
-        public decimal MaintenancePrice { get; init; }
-        public string? MaintenanceCurrentyType { get; init; }
-
-        public decimal FeaturesPrice { get; init; }
-        public string? FeaturesCurrencyType { get; init; }
-        
-        public decimal TotalPrice { get; init; }
-        public string? TotalPriceCurrencyType { get; init; }
-
-        public DateOnly StartDuration { get; init; }
-        public DateOnly EndDuration { get; init; }
+        public DateOnly StartDate { get; init; }
+        public DateOnly EndDate { get; init; }
 
         public DateTime CreationDate { get; init; }
+
+        public DateOnly ConfirmDate { get; init; }
+        public DateOnly RejectDate { get; init; }
+        public DateOnly CompleteDate { get; init; }
+        public DateOnly CancelationDate { get; init; }
+
+        
 
     }
 }
