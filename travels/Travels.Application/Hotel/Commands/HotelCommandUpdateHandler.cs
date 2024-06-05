@@ -51,11 +51,11 @@ namespace Travels.Application.Hotel.Commands
 
                 _hotelRepository.Update(hotelToUpdate);
 
-                if (hotelsRoomsToUpdate == null)
-                {
-                    HotelsRoomsEntity hotelsRoomsToCreate = HotelsRoomsEntity.Create(request.Id, request.RoomId, new IsActive(true));
-                    _hotelsRoomsRepository.Add(hotelsRoomsToCreate);
-                }
+                //if (hotelsRoomsToUpdate == null)
+                //{
+                //    HotelsRoomsEntity hotelsRoomsToCreate = HotelsRoomsEntity.Create(request.Id, request.RoomId, new IsActive(true));
+                //    _hotelsRoomsRepository.Add(hotelsRoomsToCreate);
+                //}
 
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
 

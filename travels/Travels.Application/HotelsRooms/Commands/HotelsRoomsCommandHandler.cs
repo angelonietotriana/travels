@@ -7,66 +7,64 @@ using Travels.Domain.Hotels;
 using Travels.Domain.HotelsRooms;
 using Travels.Domain.Rooms;
 
-namespace Travels.Application.Hotel.Commands
+namespace Travels.Application.HotelsRooms.Commands
 {
 
-    internal sealed class HotelCommandHandler :
-    ICommandHandler<HotelCommand, Guid>
+    internal sealed class HotelsRoomsCommandHandler :
+    ICommandHandler<HotelsRoomsCommand, Guid>
     {
         private readonly IHotelRepository _hotelRepository;
         private readonly IHotelsRoomsRepository _hotelsRoomsRepository;
         private readonly IRoomRepository _roomRepository;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IDateTimeProvider _dateTimeProvider;
 
-        public HotelCommandHandler(IHotelRepository hotelRepository,
+        public HotelsRoomsCommandHandler(IHotelRepository hotelRepository,
                                    IHotelsRoomsRepository hotelsRoomsRepository,
                                    IRoomRepository roomRepository,
-                                   IUnitOfWork unitOfWork,
-                                   IDateTimeProvider dateTimeProvider)
+                                   IUnitOfWork unitOfWork)
         {
 
             _hotelRepository = hotelRepository;
             _unitOfWork = unitOfWork;
-            _dateTimeProvider = dateTimeProvider;
             _hotelsRoomsRepository = hotelsRoomsRepository;
             _roomRepository = roomRepository;
         }
 
-        public async Task<Result<Guid>> Handle(HotelCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Guid>> Handle(HotelsRoomsCommand request, CancellationToken cancellationToken)
         {
 
             try
             {
-                var room = _hotelRepository.GetByIdAsync(request.RoomId);
+                var room = _roomRepository.GetByIdAsync(request.RoomId);
 
                 if (room == null)
                     return Result.Failure<Guid>(HotelErrors.NotFoundRooom);
 
+                var hotel = _hotelRepository.GetByIdAsync(request.HotelId);
 
-                var hotel = HotelEntity.Create(
-                    request!.Business,
-                    request!.Address,
-                    request.Capacity,
-                    request!.Starts,
-                    request.State,
-                    DateOnly.FromDateTime(_dateTimeProvider.currentTime)
-                );
+                if (room == null)
+                    return Result.Failure<Guid>(HotelErrors.NotFoundRooom);
 
-                _hotelRepository.Add(hotel);
+                var hotelsRooms = HotelsRoomsEntity.Create(
+                    request!.RoomId,
+                    request!.HotelId,
+                    new IsActive(request.IsActive)
+                    );
+
+                _hotelsRoomsRepository.Add(hotelsRooms);
 
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-                return hotel.Id;
+                return hotelsRooms.Id;
             }
             catch (ConcurrencyException)
             {
-                return Result.Failure<Guid>(BookingErrors.CreatedHotel);
+                return Result.Failure<Guid>(BookingErrors.CreatedRelatedHotelRoom);
             }
 
         }
 
-      
+
 
     }
 }

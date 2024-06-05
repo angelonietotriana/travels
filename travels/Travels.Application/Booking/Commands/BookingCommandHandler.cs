@@ -38,10 +38,7 @@ namespace Travels.Application.Booking.Commands
         _dateTimeProvider = dateTimeProvider;
     }
 
-        public async Task<Result<Guid>> Handle(
-            BookingCommand request,
-            CancellationToken cancellationToken
-            )
+        public async Task<Result<Guid>> Handle(BookingCommand request, CancellationToken cancellationToken)
         {
 
             var userBooking = await _userRepository.GetByIdAsync(request.UserIdBooking, cancellationToken);

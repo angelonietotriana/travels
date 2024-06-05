@@ -17,5 +17,6 @@ namespace Travels.Domain.Bookings
         void Add(BookingEntity hotel);
 
         void Update(BookingEntity hotel);
+
     }
 }

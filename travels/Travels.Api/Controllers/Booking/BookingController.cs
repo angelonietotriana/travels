@@ -88,6 +88,18 @@ namespace Travels.Api.Controllers.Booking
             return CreatedAtAction(nameof(GetBooking), new { id = response.Value }, response.Value);
         }
 
+
+        [HttpGet("")]
+        public async Task<IActionResult> GetAllBooking(CancellationToken cancellationToken)
+        {
+            
+            var query = new GetBookingQueryAll();
+            var resultado = await _sender.Send(query, cancellationToken);
+
+            return resultado.IsSuccess ? Ok(resultado.Value) : NotFound();
+            
+        }
+
     }
 
 }

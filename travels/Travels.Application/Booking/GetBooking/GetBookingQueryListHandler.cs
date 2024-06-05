@@ -6,16 +6,16 @@ using Travels.Domain.Abstractions;
 namespace Travels.Application.Booking.GetBooking
 {
 
-    internal sealed class GetBookingQueryHandler : IQueryHandler<GetBookingQuery, BookingResponse>
+    internal sealed class GetBookingQueryListHandler : IQueryHandler<GetBookingQueryAll, List<BookingResponse>>
     {
         private readonly ISqlConnectionFactory _sqlConnectionFactory;
 
-        public GetBookingQueryHandler(ISqlConnectionFactory sqlConnectionFactory)
+        public GetBookingQueryListHandler(ISqlConnectionFactory sqlConnectionFactory)
         {
             _sqlConnectionFactory = sqlConnectionFactory;
         }
 
-        public async Task<Result<BookingResponse>> Handle(GetBookingQuery request, CancellationToken cancellationToken)
+        public async Task<Result<List<BookingResponse>>> Handle(GetBookingQueryAll request, CancellationToken cancellationToken)
         {
 
             using var connection = _sqlConnectionFactory.CreateConnection();
@@ -35,21 +35,15 @@ namespace Travels.Application.Booking.GetBooking
                 ,reject_date AS RejectDate
                 ,complete_date AS CompleteDate
                 ,cancelation_date AS CancelationDate
-           FROM bookings WHERE id=@BookingId  
+           FROM bookings  
         """;
 
 
 
 
-            var booking = await connection.QueryFirstOrDefaultAsync<BookingResponse>(
-                sql,
-                new
-                {
-                    request.BookingId
-                }
-            );
+            var booking = await connection.QueryAsync<BookingResponse>(sql);
 
-            return booking!;
+            return booking.ToList();
         }
     }
 }
