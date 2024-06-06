@@ -1,7 +1,6 @@
 using Dapper;
 using Travels.Application.Abstractions.Data;
 using Travels.Application.Abstractions.Messaging;
-using Travels.Application.Hotel.GetHotel;
 using Travels.Domain.Abstractions;
 
 namespace Travels.Application.HotelsRooms.GetHotelsRooms

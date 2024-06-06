@@ -27,15 +27,15 @@ namespace Travels.Domain.Bookings
 
         internal BookingEntity()
         {
-            
+
         }
 
-        internal BookingEntity(Guid hotelId, 
-                             Guid roomId, 
+        internal BookingEntity(Guid hotelId,
+                             Guid roomId,
                              Guid userIdBooking,
-                             Guid userIdVendor, 
-                             BookingStatus status, 
-                             DateRange? duration, 
+                             Guid userIdVendor,
+                             BookingStatus status,
+                             DateRange? duration,
                              DateTime? creationDate)
         {
             Id = Guid.NewGuid();

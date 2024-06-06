@@ -18,7 +18,7 @@ namespace Travels.Infrastructure.Data
         public IDbConnection CreateConnection()
         {
             var connection = new SqlConnection(_connectionString);
-            
+
             connection.Open();
 
             return connection;

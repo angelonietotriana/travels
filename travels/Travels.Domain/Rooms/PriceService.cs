@@ -30,14 +30,14 @@ namespace Travels.Domain.Rooms
 
             if (porcentageChange > 0)
                 accesorioCharges = new Currency(precioPorPeriodo.Amount * porcentageChange);
-            
+
 
             var precioTotal = Currency.Zero();
             precioTotal += precioPorPeriodo;
 
             if (!room!.Maintenance!.IsZero())
                 precioTotal += room.Maintenance;
-           
+
 
             precioTotal += accesorioCharges;
 

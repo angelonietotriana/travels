@@ -1,5 +1,4 @@
 using Travels.Domain.Hotels;
-using Travels.Domain.Users;
 
 namespace Travels.Infrastructure.Repositories
 {

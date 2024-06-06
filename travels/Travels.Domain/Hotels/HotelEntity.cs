@@ -10,15 +10,15 @@ namespace Travels.Domain.Hotels
         public TotalCapacity? Capacity { get; set; }
         public Stars? Starts { get; set; }
         public HotelStatus? State { get; set; }
-        public DateOnly DateCreated {  get; set; }
-       
+        public DateOnly DateCreated { get; set; }
+
         public HotelEntity() { }
 
-        public HotelEntity(Business? business, 
-            Address? address, 
-            TotalCapacity? capacity, 
-            Stars? starts, 
-            HotelStatus? state, 
+        public HotelEntity(Business? business,
+            Address? address,
+            TotalCapacity? capacity,
+            Stars? starts,
+            HotelStatus? state,
             DateOnly dateCreated)
         {
             Id = Guid.NewGuid();
@@ -30,14 +30,14 @@ namespace Travels.Domain.Hotels
             DateCreated = dateCreated;
         }
 
-        public static HotelEntity Create(Business? business, 
-                        Address? address, 
-                        TotalCapacity? capacity, 
-                        Stars? starts, 
+        public static HotelEntity Create(Business? business,
+                        Address? address,
+                        TotalCapacity? capacity,
+                        Stars? starts,
                         HotelStatus? state,
                         DateOnly dateCreate)
         {
-           var _hotel = new HotelEntity(business, address, capacity, starts, state, dateCreate);
+            var _hotel = new HotelEntity(business, address, capacity, starts, state, dateCreate);
             _hotel.RaiseDomainEvent(new HotelInitDomainEvent(_hotel.Id));
 
             return _hotel;

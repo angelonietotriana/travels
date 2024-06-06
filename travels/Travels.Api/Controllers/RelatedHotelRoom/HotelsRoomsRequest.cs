@@ -1,5 +1,3 @@
-using Travels.Domain.Hotels;
-
 namespace Travels.Api.Controllers.RelatedHotelsRooms
 {
 

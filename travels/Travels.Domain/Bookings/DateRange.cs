@@ -1,4 +1,5 @@
-namespace Travels.Domain.Bookings {
+namespace Travels.Domain.Bookings
+{
     public sealed record DateRange
     {
         private DateRange()

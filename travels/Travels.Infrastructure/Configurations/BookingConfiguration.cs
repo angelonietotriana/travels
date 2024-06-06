@@ -1,10 +1,9 @@
-using Travels.Domain.Bookings;
-using Travels.Domain.Shared;
-using Travels.Domain.Users;
-using Travels.Domain.Rooms;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Travels.Domain.Bookings;
 using Travels.Domain.Hotels;
+using Travels.Domain.Rooms;
+using Travels.Domain.Users;
 
 namespace CleanArchitecture.Infrastructure.Configurations;
 

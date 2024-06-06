@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Travels.Domain.Hotels;
-using Travels.Domain.Rooms;
 
 namespace CleanArchitecture.Infrastructure.Configurations
 {
@@ -15,7 +14,7 @@ namespace CleanArchitecture.Infrastructure.Configurations
 
             builder.HasKey(hotel => hotel.Id);
 
-            builder.OwnsOne(hotel =>hotel.Business);
+            builder.OwnsOne(hotel => hotel.Business);
             builder.OwnsOne(hotel => hotel.Address);
             builder.OwnsOne(hotel => hotel.Capacity);
 

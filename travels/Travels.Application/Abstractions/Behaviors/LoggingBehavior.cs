@@ -1,6 +1,6 @@
-using Travels.Application.Abstractions.Messaging;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Travels.Application.Abstractions.Messaging;
 
 namespace Travels.Application.Abstractions.Behaviors
 {

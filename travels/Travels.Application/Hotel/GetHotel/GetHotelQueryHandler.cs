@@ -16,7 +16,7 @@ namespace Travels.Application.Booking.GetBooking
             _sqlConnectionFactory = sqlConnectionFactory;
         }
 
-        public async Task<Result<HotelResponse>> Handle(GetHotelQuery request, CancellationToken cancellationToken )
+        public async Task<Result<HotelResponse>> Handle(GetHotelQuery request, CancellationToken cancellationToken)
         {
 
             using var connection = _sqlConnectionFactory.CreateConnection();

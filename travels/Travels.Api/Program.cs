@@ -21,7 +21,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.ApplyMigration();   
+app.ApplyMigration();
 
 app.UseHttpsRedirection();
 

@@ -4,8 +4,8 @@ namespace Travels.Application.Rooms.GetRoom
     public sealed class RoomResponse
     {
         public Guid Id { get; set; }
-        public int LocalizationFloor {  get; set; }
-        public int LocalizationView {  get; set; }
+        public int LocalizationFloor { get; set; }
+        public int LocalizationView { get; set; }
         public int NumberOfBeds { get; set; }
         public int Capacity { get; set; }
         public string Features { get; set; }

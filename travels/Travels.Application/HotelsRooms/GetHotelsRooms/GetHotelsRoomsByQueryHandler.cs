@@ -14,8 +14,8 @@ namespace Travels.Application.HotelsRooms.GetHotelsRooms
         {
             _sqlConnectionFactory = sqlConnectionFactory;
         }
-        
-        public async Task<Result<HotelsRoomsResponse>> Handle(GetHotelsRoomsQuery request, CancellationToken cancellationToken )
+
+        public async Task<Result<HotelsRoomsResponse>> Handle(GetHotelsRoomsQuery request, CancellationToken cancellationToken)
         {
 
             using var connection = _sqlConnectionFactory.CreateConnection();
@@ -41,6 +41,6 @@ namespace Travels.Application.HotelsRooms.GetHotelsRooms
 
             return hotelsRooms!;
         }
-       
+
     }
 }

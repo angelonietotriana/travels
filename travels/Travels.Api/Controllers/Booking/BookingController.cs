@@ -1,11 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Travels.Api.Controllers.Hotel;
 using Travels.Application.Booking.Commands;
 using Travels.Application.Booking.GetBooking;
-using Travels.Application.Hotel.Commands;
-using Travels.Domain.Bookings;
-using Travels.Domain.Hotels;
 
 namespace Travels.Api.Controllers.Booking
 {
@@ -92,12 +88,12 @@ namespace Travels.Api.Controllers.Booking
         [HttpGet("")]
         public async Task<IActionResult> GetAllBooking(CancellationToken cancellationToken)
         {
-            
+
             var query = new GetBookingQueryAll();
             var resultado = await _sender.Send(query, cancellationToken);
 
             return resultado.IsSuccess ? Ok(resultado.Value) : NotFound();
-            
+
         }
 
     }

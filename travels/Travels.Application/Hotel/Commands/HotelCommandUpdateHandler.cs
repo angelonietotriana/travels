@@ -47,15 +47,9 @@ namespace Travels.Application.Hotel.Commands
                 hotelToUpdate.Address = request.Address;
                 hotelToUpdate.Capacity = request.Capacity;
                 hotelToUpdate.Starts = request.Starts;
-                hotelToUpdate.State = request.State;    
+                hotelToUpdate.State = request.State;
 
                 _hotelRepository.Update(hotelToUpdate);
-
-                //if (hotelsRoomsToUpdate == null)
-                //{
-                //    HotelsRoomsEntity hotelsRoomsToCreate = HotelsRoomsEntity.Create(request.Id, request.RoomId, new IsActive(true));
-                //    _hotelsRoomsRepository.Add(hotelsRoomsToCreate);
-                //}
 
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
 
@@ -68,7 +62,7 @@ namespace Travels.Application.Hotel.Commands
 
         }
 
-       
+
 
     }
 }

@@ -10,8 +10,8 @@ namespace Travels.Domain.Shared
 
 
         public static Currency Zero() => new(0);
-       
+
         public bool IsZero() => this == Zero();
     };
-    
+
 }

@@ -23,7 +23,7 @@ namespace Travels.Application.Booking.GetBooking
         public DateOnly CompleteDate { get; init; }
         public DateOnly CancelationDate { get; init; }
 
-        
+
 
     }
 }

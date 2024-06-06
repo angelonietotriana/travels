@@ -1,6 +1,7 @@
 using Travels.Domain.Abstractions;
 
-namespace Travels.Domain.Bookings {
+namespace Travels.Domain.Bookings
+{
 
 
     public static class BookingErrors

@@ -1,4 +1,3 @@
-using System.Security.Cryptography.X509Certificates;
 using FluentValidation;
 
 namespace Travels.Application.Hotel.Commands
@@ -13,8 +12,8 @@ namespace Travels.Application.Hotel.Commands
             RuleFor(c => c.Business).NotEmpty();
             RuleFor(c => c.Starts).NotEmpty();
             RuleFor(c => c.State).NotEmpty();
-            RuleFor(c => c.RoomId).NotEmpty();           
-            
+            RuleFor(c => c.RoomId).NotEmpty();
+
         }
     }
 }

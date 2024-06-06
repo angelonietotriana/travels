@@ -1,4 +1,3 @@
-using Travels.Application.Abstractions.Clock;
 using Travels.Application.Abstractions.Messaging;
 using Travels.Application.Exceptions;
 using Travels.Domain.Abstractions;

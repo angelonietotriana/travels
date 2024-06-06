@@ -12,31 +12,31 @@ namespace Travels.Application.Booking.Commands
 
     internal sealed class BookingCommandHandler :
     ICommandHandler<BookingCommand, Guid>
-{
-    private readonly IUserRepository _userRepository;
-    private readonly IRoomRepository _roomRepository;
-    private readonly IHotelRepository _hotelRepository;
-    private readonly IBookingRepository _bookingRepository;
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IDateTimeProvider _dateTimeProvider;
-
-    public BookingCommandHandler(
-        IUserRepository userRepository,
-        IRoomRepository roomRepository,
-        IBookingRepository bookingRepository,
-        IHotelRepository hotelRepository,
-        PriceService priceService,
-        IUnitOfWork unitOfWork,
-        IDateTimeProvider dateTimeProvider
-        )
     {
-        _userRepository = userRepository;
-        _roomRepository = roomRepository;
-        _bookingRepository = bookingRepository;
-        _hotelRepository = hotelRepository;
-        _unitOfWork = unitOfWork;
-        _dateTimeProvider = dateTimeProvider;
-    }
+        private readonly IUserRepository _userRepository;
+        private readonly IRoomRepository _roomRepository;
+        private readonly IHotelRepository _hotelRepository;
+        private readonly IBookingRepository _bookingRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IDateTimeProvider _dateTimeProvider;
+
+        public BookingCommandHandler(
+            IUserRepository userRepository,
+            IRoomRepository roomRepository,
+            IBookingRepository bookingRepository,
+            IHotelRepository hotelRepository,
+            PriceService priceService,
+            IUnitOfWork unitOfWork,
+            IDateTimeProvider dateTimeProvider
+            )
+        {
+            _userRepository = userRepository;
+            _roomRepository = roomRepository;
+            _bookingRepository = bookingRepository;
+            _hotelRepository = hotelRepository;
+            _unitOfWork = unitOfWork;
+            _dateTimeProvider = dateTimeProvider;
+        }
 
         public async Task<Result<Guid>> Handle(BookingCommand request, CancellationToken cancellationToken)
         {
@@ -44,23 +44,23 @@ namespace Travels.Application.Booking.Commands
             var userBooking = await _userRepository.GetByIdAsync(request.UserIdBooking, cancellationToken);
             if (userBooking is null)
                 return Result.Failure<Guid>(UserErrors.NotFound);
-            
+
             var userVendor = await _userRepository.GetByIdAsync(request.UserIdShell, cancellationToken);
             if (userVendor is null)
                 return Result.Failure<Guid>(UserErrors.NotFound);
-           
+
 
             var hotel = await _hotelRepository.GetByIdAsync(request.HotelId, cancellationToken);
 
             if (hotel is null)
                 return Result.Failure<Guid>(BookingErrors.NotFoundHotel);
-            
+
             var room = await _roomRepository.GetByIdAsync(request.RoomsId, cancellationToken);
 
             if (room is null)
                 return Result.Failure<Guid>(BookingErrors.NotFoundRoom);
 
-        
+
             var duration = DateRange.Create(request.StartDate, request.EndDate);
 
             if (await _bookingRepository.IsOverlappingAsync(room, hotel, duration, cancellationToken))

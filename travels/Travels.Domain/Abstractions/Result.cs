@@ -1,6 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using System.Net.Http.Headers;
-using System.Runtime.InteropServices;
 
 namespace Travels.Domain.Abstractions
 {

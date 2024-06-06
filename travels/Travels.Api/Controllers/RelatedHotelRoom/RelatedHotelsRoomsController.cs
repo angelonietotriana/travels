@@ -1,9 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Travels.Application.Hotel.Commands;
 using Travels.Application.HotelsRooms.Commands;
 using Travels.Application.HotelsRooms.GetHotelsRooms;
-using Travels.Domain.Hotels;
 
 namespace Travels.Api.Controllers.RelatedHotelsRooms
 {
@@ -49,7 +47,7 @@ namespace Travels.Api.Controllers.RelatedHotelsRooms
 
             if (response.IsFailure)
                 return BadRequest(response.Error);
-            
+
 
             return CreatedAtAction(nameof(GetHotelRoom), new { id = response.Value }, response.Value);
         }

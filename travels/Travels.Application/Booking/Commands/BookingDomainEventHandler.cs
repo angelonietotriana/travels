@@ -1,12 +1,12 @@
+using MediatR;
 using Travels.Application.Abstractions.Email;
 using Travels.Domain.Bookings;
 using Travels.Domain.Bookings.Events;
 using Travels.Domain.Users;
-using MediatR;
 
 namespace Travels.Application.Booking.Commands
 {
-    
+
     internal sealed class BookingDomainEventHandler
     : INotificationHandler<BookingDomainEvent>
     {
@@ -45,7 +45,7 @@ namespace Travels.Application.Booking.Commands
 
             if (userBooking is null)
                 return;
-           
+
             await _emailService.SendAsync(
                 userBooking.Email!,
                 "Alquiler Reservado",

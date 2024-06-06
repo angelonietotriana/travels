@@ -1,9 +1,9 @@
 using Bogus;
-using Travels.Application.Abstractions.Data;
-using Travels.Domain.Rooms;
 using Dapper;
+using Travels.Application.Abstractions.Data;
 
-namespace Travels.Api.Extensions {
+namespace Travels.Api.Extensions
+{
 
     public static class SeedDataExtensions
     {
@@ -18,8 +18,8 @@ namespace Travels.Api.Extensions {
             List<object> objects = new();
 
             for (var i = 0; i < 100; i++)
-            {   
-               // creación room
+            {
+                // creación room
             }
 
             const string sql = ""; /*"""

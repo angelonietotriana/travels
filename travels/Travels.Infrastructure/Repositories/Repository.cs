@@ -1,8 +1,8 @@
-using Travels.Domain.Abstractions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using Travels.Domain.Abstractions;
 
-namespace Travels.Infrastructure.Repositories {
+namespace Travels.Infrastructure.Repositories
+{
 
 
     internal abstract class Repository<T>
@@ -34,5 +34,5 @@ namespace Travels.Infrastructure.Repositories {
             DbContext.Update(entity);
         }
 
-     }
+    }
 }

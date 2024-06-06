@@ -1,10 +1,7 @@
-using Microsoft.AspNetCore.Routing.Patterns;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Travels.Domain.Hotels;
 using Travels.Domain.Rooms;
 using Travels.Domain.Shared;
-using Travels.Domain.Users;
 
 namespace CleanArchitecture.Infrastructure.Configurations;
 

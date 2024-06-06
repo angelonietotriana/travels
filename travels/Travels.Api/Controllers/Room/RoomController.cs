@@ -2,7 +2,6 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Travels.Application.Rooms.Commands;
 using Travels.Application.Rooms.GetRoom;
-using Travels.Domain.Abstractions;
 using Travels.Domain.Rooms;
 using Travels.Domain.Shared;
 
@@ -51,8 +50,8 @@ namespace Travels.Api.Controllers.Room
 
             if (response.IsFailure)
                 return BadRequest(response.Error);
-            
-            
+
+
             return CreatedAtAction(nameof(GetRoom), new { id = response.Value }, response.Value);
 
 

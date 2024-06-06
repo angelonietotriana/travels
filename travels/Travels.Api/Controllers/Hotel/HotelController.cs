@@ -50,7 +50,7 @@ namespace Travels.Api.Controllers.Hotel
 
             if (response.IsFailure)
                 return BadRequest(response.Error);
-            
+
 
             return CreatedAtAction(nameof(GetHotel), new { id = response.Value }, response.Value);
         }

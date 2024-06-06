@@ -1,5 +1,5 @@
-using Travels.Domain.Abstractions;
 using MediatR;
+using Travels.Domain.Abstractions;
 
 namespace Travels.Application.Abstractions.Messaging
 {

@@ -1,4 +1,3 @@
-using System.Security.Cryptography.X509Certificates;
 using FluentValidation;
 
 namespace Travels.Application.Booking.Commands
@@ -14,7 +13,7 @@ namespace Travels.Application.Booking.Commands
             RuleFor(c => c.UserIdBooking).NotEmpty();
             RuleFor(c => c.UserIdShell).NotEmpty();
             RuleFor(c => c.StartDate).LessThan(c => c.EndDate);
-            
+
         }
     }
 }

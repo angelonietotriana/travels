@@ -1,6 +1,5 @@
-using Travels.Domain.Users;
-
-namespace Travels.Domain.Users {
+namespace Travels.Domain.Users
+{
 
     public interface IUserRepository
     {

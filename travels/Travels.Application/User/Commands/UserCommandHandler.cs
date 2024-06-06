@@ -10,24 +10,24 @@ namespace Travels.Application.User.Commands
 
     internal sealed class UserCommandHandler :
     ICommandHandler<UserCommand, Guid>
-{
-     private readonly IUserRepository _userRepository;
-     private readonly IUnitOfWork _unitOfWork;
+    {
+        private readonly IUserRepository _userRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
         public UserCommandHandler(
         IUserRepository userRepository,
         IUnitOfWork unitOfWork,
         IDateTimeProvider dateTimeProvider
         )
-    {
+        {
 
-        _userRepository = userRepository;
-        _unitOfWork = unitOfWork;
-    }
+            _userRepository = userRepository;
+            _unitOfWork = unitOfWork;
+        }
 
         public async Task<Result<Guid>> Handle(UserCommand request, CancellationToken cancellationToken)
         {
-          
+
             try
             {
                 var user = UserEntity.Create(

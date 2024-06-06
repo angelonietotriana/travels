@@ -1,7 +1,8 @@
 using Travels.Domain.Abstractions;
 using Travels.Domain.Users.Events;
 
-namespace Travels.Domain.Users {
+namespace Travels.Domain.Users
+{
 
 
 
@@ -15,7 +16,7 @@ namespace Travels.Domain.Users {
         public Nombre? Nombre { get; private set; }
         public Apellido? Apellido { get; private set; }
         public Email? Email { get; private set; }
-        public UserType? Type { get; private set; } 
+        public UserType? Type { get; private set; }
 
         private UserEntity(Guid id,
                             Nombre nombre,

@@ -6,10 +6,10 @@ namespace Travels.Domain.Rooms
 {
     public sealed class RoomEntity : Entity
     {
-        public Localization? Localization {  get; set; }
+        public Localization? Localization { get; set; }
         public NumberOfBeds? NumberOfBeds { get; set; }
         public Capacity? Capacity { get; set; }
-        public List<Features>? Features {  get; set; }
+        public List<Features>? Features { get; set; }
         public RoomType RoomType { get; set; }
 
         public Currency? PricePerPeriod { get; set; }
@@ -21,7 +21,7 @@ namespace Travels.Domain.Rooms
 
         public RoomEntity()
         {
-            
+
         }
 
         /// <summary>
@@ -38,12 +38,12 @@ namespace Travels.Domain.Rooms
         /// <param name="FeaturesPrice"></param>
         /// <param name="price"></param>
         internal RoomEntity(Localization? localization,
-                          NumberOfBeds? numberOfBeds, 
-                          Capacity? capacity, 
-                          List<Features>? features, 
-                          RoomType roomType, 
-                          Currency? pricePerPeriod, 
-                          Currency? maintenance, 
+                          NumberOfBeds? numberOfBeds,
+                          Capacity? capacity,
+                          List<Features>? features,
+                          RoomType roomType,
+                          Currency? pricePerPeriod,
+                          Currency? maintenance,
                           Currency? totalPrice,
                           Currency? FeaturesPrice,
                           Currency price)
@@ -57,7 +57,7 @@ namespace Travels.Domain.Rooms
             PricePerPeriod = pricePerPeriod;
             Maintenance = maintenance;
             TotalPrice = totalPrice;
-            this.FeaturesPrice = FeaturesPrice; 
+            this.FeaturesPrice = FeaturesPrice;
             Price = price;
         }
 

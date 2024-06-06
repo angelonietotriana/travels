@@ -38,8 +38,8 @@ namespace Travels.Application.Rooms.Commands
                 roomToUpdate.RoomType = request.RoomType;
                 roomToUpdate.PricePerPeriod = request.PricePerPeriod;
                 roomToUpdate.Maintenance = request.Maintenance;
-                roomToUpdate.TotalPrice = request.TotalPrice;   
-                roomToUpdate.FeaturesPrice = request.FeaturesPrice; 
+                roomToUpdate.TotalPrice = request.TotalPrice;
+                roomToUpdate.FeaturesPrice = request.FeaturesPrice;
                 roomToUpdate.Price = request.Price;
 
 

@@ -1,6 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using Travels.Api.Middleware;
 using Travels.Infrastructure;
-using Microsoft.EntityFrameworkCore;
 
 namespace Travels.Api.Extensions
 {

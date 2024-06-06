@@ -66,7 +66,7 @@ namespace Travels.Application.Hotel.Commands
 
         }
 
-      
+
 
     }
 }
